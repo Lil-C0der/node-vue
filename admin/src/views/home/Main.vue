@@ -1,10 +1,10 @@
 <template>
   <woo-layout style="height: 100vh">
     <woo-sider>
-      <aside-menu></aside-menu>
+      <aside-menu />
     </woo-sider>
     <woo-layout>
-      <woo-header>HEADER</woo-header>
+      <woo-header></woo-header>
       <woo-content>
         <router-view />
       </woo-content>
@@ -38,11 +38,9 @@ export default {
 }
 .woo-content {
   background-color: #eff1fe;
-  line-height: 120px;
 }
 .woo-sider {
   background-color: #8895b1;
-  line-height: 160px;
 }
 .woo-footer {
   background-color: #546c8c;

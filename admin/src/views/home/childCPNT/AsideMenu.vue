@@ -1,9 +1,10 @@
 <template>
-  <woo-menu @select="handleMenuItemSelect" vertical>
+  <woo-menu @select="handleMenuItemSelect" v-model="activeIndex" vertical>
     <woo-submenu index="2">
-      <template #title>内容管理</template>
-      <!-- <woo-menu-item index="/categories/create">新建分类</woo-menu-item> -->
-      <!-- <woo-menu-item index="/categories/list">分类列表</woo-menu-item> -->
+      <template #title>
+        <i class="el-icon-takeaway-box"></i>
+        内容管理
+      </template>
       <woo-menu-item index="categoriesEdit">新建分类</woo-menu-item>
       <woo-menu-item index="categoriesList">分类列表</woo-menu-item>
     </woo-submenu>
@@ -15,7 +16,9 @@ import { WooMenu, WooMenuItem, WooSubmenu } from "woo-ui";
 export default {
   name: "AsideMenu",
   data() {
-    return {};
+    return {
+      activeIndex: null,
+    };
   },
   components: {
     WooMenu,
@@ -25,8 +28,16 @@ export default {
   methods: {
     handleMenuItemSelect(index) {
       this.$router.push({ name: index });
-      //   console.log(index);
     },
+    getPath() {
+      this.activeIndex = this.$route.name;
+    },
+  },
+  created() {
+    this.getPath();
+  },
+  watch: {
+    $route: "getPath",
   },
 };
 </script>
